@@ -36,6 +36,7 @@ void bar()
 
 void GameEngine::move()
 {
+
 	m_board.move(23, Checkers::SW);
 //	future<int> f1 = async(foo);
 //	future<void> f1(async(bar));
