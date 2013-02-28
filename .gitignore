@@ -1,2 +1,13 @@
-Debug/**
+Checkers/Debug/*
+CheckersTest/Debug/*
+CheckersApp/Debug/*
 .metadata/**
+*.[oa]
+*.o
+*.a
+*.so
+*.dll
+*.out
+*.exe
+*.obj
+*.swp
