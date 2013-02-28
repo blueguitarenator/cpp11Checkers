@@ -1,0 +1,33 @@
+/*
+ * Checker.cpp
+ *
+ *  Created on: Feb 24, 2013
+ *      Author: richardjohnson
+ */
+
+#include "Checker.h"
+#include <memory>
+
+using namespace std;
+
+Checker::Checker(shared_ptr<Square> square)
+:m_square(square)
+{
+	auto x = unique_ptr<int>(new int(1));
+
+}
+
+Checker::~Checker()
+{
+}
+
+int Checker::work(int x, int y)
+{
+	return x + y;
+}
+
+bool Checker::move(Checkers::DirectionType dir)
+{
+
+	return false;
+}

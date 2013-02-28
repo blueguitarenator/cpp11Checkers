@@ -1,0 +1,18 @@
+//============================================================================
+// Name        : CheckersApp.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <Checkers/Board.h>
+
+using namespace std;
+
+int main() {
+	Board b;
+	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	return 0;
+}

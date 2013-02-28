@@ -1,0 +1,25 @@
+/*
+ * GameEngine.cpp
+ *
+ *  Created on: Feb 27, 2013
+ *      Author: richardjohnson
+ */
+
+#include "GameEngine.h"
+#include "Board.h"
+#include "CheckerTypes.h"
+
+GameEngine::GameEngine(Board& board)
+: m_board(board)
+{
+
+}
+
+GameEngine::~GameEngine()
+{
+}
+
+void GameEngine::move()
+{
+	m_board.move(23, Checkers::SW);
+}

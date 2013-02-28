@@ -1,0 +1,18 @@
+/*
+ * GameEngine.cpp
+ *
+ *  Created on: Feb 27, 2013
+ *      Author: richardjohnson
+ */
+
+#include "GameEngine.h"
+
+GameEngine::GameEngine() {
+	// TODO Auto-generated constructor stub
+
+}
+
+GameEngine::~GameEngine() {
+	// TODO Auto-generated destructor stub
+}
+

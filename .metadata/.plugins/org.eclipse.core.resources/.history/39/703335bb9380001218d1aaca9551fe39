@@ -1,0 +1,59 @@
+/*
+ * Checker.cpp
+ *
+ *  Created on: Feb 24, 2013
+ *      Author: richardjohnson
+ */
+
+#include "Checker.h"
+#include <memory>
+
+using namespace std;
+
+Checker::Checker(shared_ptr<Square> square)
+:m_square(square)
+{
+	m_square->setChecker(shared_ptr<Checker>(this));
+}
+
+Checker::~Checker()
+{
+}
+
+int Checker::work(int x, int y)
+{
+	return x + y;
+}
+
+bool Checker::move(Checkers::DirectionType dir)
+{
+	if (dir == Checkers::NE)
+	{
+		if (m_square->getNE() != NULL && m_square->getNE()->isEmpty())
+		{
+			return true;
+		}
+	}
+	else if (dir == Checkers::NW)
+	{
+		if (m_square->getNW() != NULL && m_square->getNW()->isEmpty())
+		{
+			return true;
+		}
+	}
+	else if (dir == Checkers::SE)
+	{
+		if (m_square->getSE() != NULL && m_square->getSE()->isEmpty())
+		{
+			return true;
+		}
+	}
+	else
+	{
+		if (m_square->getSW() != NULL && m_square->getSW()->isEmpty())
+		{
+			return true;
+		}
+	}
+	return false;
+}

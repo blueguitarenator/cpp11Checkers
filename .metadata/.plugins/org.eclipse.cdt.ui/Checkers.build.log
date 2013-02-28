@@ -1,0 +1,36 @@
+11:31:37 **** Incremental Build of configuration Debug for project Checkers ****
+make all 
+Building file: ../Board.cpp
+Invoking: GCC C++ Compiler
+g++ -I/Users/richardjohnson/code/cpp/gtest-1.6.0/include -I/opt/local/include/gcc47/c++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++0x -MMD -MP -MF"Board.d" -MT"Board.d" -o "Board.o" "../Board.cpp"
+Finished building: ../Board.cpp
+ 
+Building file: ../Checker.cpp
+Invoking: GCC C++ Compiler
+g++ -I/Users/richardjohnson/code/cpp/gtest-1.6.0/include -I/opt/local/include/gcc47/c++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++0x -MMD -MP -MF"Checker.d" -MT"Checker.d" -o "Checker.o" "../Checker.cpp"
+Finished building: ../Checker.cpp
+ 
+Building file: ../Game.cpp
+Invoking: GCC C++ Compiler
+g++ -I/Users/richardjohnson/code/cpp/gtest-1.6.0/include -I/opt/local/include/gcc47/c++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++0x -MMD -MP -MF"Game.d" -MT"Game.d" -o "Game.o" "../Game.cpp"
+Finished building: ../Game.cpp
+ 
+Building file: ../GameEngine.cpp
+Invoking: GCC C++ Compiler
+g++ -I/Users/richardjohnson/code/cpp/gtest-1.6.0/include -I/opt/local/include/gcc47/c++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++0x -MMD -MP -MF"GameEngine.d" -MT"GameEngine.d" -o "GameEngine.o" "../GameEngine.cpp"
+Finished building: ../GameEngine.cpp
+ 
+Building file: ../Square.cpp
+Invoking: GCC C++ Compiler
+g++ -I/Users/richardjohnson/code/cpp/gtest-1.6.0/include -I/opt/local/include/gcc47/c++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++0x -MMD -MP -MF"Square.d" -MT"Square.d" -o "Square.o" "../Square.cpp"
+Finished building: ../Square.cpp
+ 
+Building target: libCheckers.a
+Invoking: GCC Archiver
+ar -r  "libCheckers.a"  ./Board.o ./Checker.o ./Game.o ./GameEngine.o ./Square.o   
+ar: creating archive libCheckers.a
+Finished building target: libCheckers.a
+ 
+
+11:31:40 Build Finished (took 3s.614ms)
+

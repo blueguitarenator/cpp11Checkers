@@ -1,0 +1,21 @@
+/*
+ * CheckerTest.cpp
+ *
+ *  Created on: Feb 24, 2013
+ *      Author: richardjohnson
+ */
+
+#include <Checkers/Checker.h>
+#include <Checkers/Square.h>
+#include <gtest/gtest.h>
+
+TEST(CheckerTest, asdf)
+{
+	Square sq(1);
+	Checker c(&sq);
+	EXPECT_EQ(20, c.work(2, 18));
+
+}
+
+
+

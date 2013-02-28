@@ -1,0 +1,24 @@
+//============================================================================
+// Name        : CheckersApp.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <Checkers/Board.h>
+#include <Checkers/CheckerTypes.h>
+using namespace std;
+
+int main() {
+	Board b;
+
+	if (b.move(9, Checkers::NE))
+	{
+		cout << "Moved" << endl;
+	}
+
+	cout << "!!!Hello Checkers!!!" << endl; // prints !!!Hello World!!!
+	return 0;
+}

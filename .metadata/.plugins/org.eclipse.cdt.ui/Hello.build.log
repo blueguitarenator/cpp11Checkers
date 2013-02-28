@@ -1,0 +1,25 @@
+07:31:29 **** Incremental Build of configuration Debug for project Hello ****
+make all 
+Building file: ../src/Hello.cpp
+Invoking: GCC C++ Compiler
+g++ -D__GXX_EXPERIMENTAL_CXX0X__ -I/opt/local/include/gcc47/c++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/Hello.d" -MT"src/Hello.d" -o "src/Hello.o" "../src/Hello.cpp"
+Finished building: ../src/Hello.cpp
+ 
+Building target: Hello
+Invoking: MacOS X C++ Linker
+g++  -o "Hello"  ./src/Hello.o   
+Undefined symbols for architecture x86_64:
+  "___emutls_v._ZSt11__once_call", referenced from:
+      void std::call_once<void (std::__future_base::_State_base::*)(std::function<std::unique_ptr<std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter> ()>&, bool&), std::__future_base::_State_base* const, std::reference_wrapper<std::function<std::unique_ptr<std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter> ()> >, std::reference_wrapper<bool> >(std::once_flag&, void (std::__future_base::_State_base::*&&)(std::function<std::unique_ptr<std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter> ()>&, bool&), std::__future_base::_State_base* const&&, std::reference_wrapper<std::function<std::unique_ptr<std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter> ()> >&&, std::reference_wrapper<bool>&&) in Hello.o
+      void std::call_once<void (std::thread::*)(), std::reference_wrapper<std::thread> >(std::once_flag&, void (std::thread::*&&)(), std::reference_wrapper<std::thread>&&) in Hello.o
+  "___emutls_v._ZSt15__once_callable", referenced from:
+      void std::call_once<void (std::__future_base::_State_base::*)(std::function<std::unique_ptr<std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter> ()>&, bool&), std::__future_base::_State_base* const, std::reference_wrapper<std::function<std::unique_ptr<std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter> ()> >, std::reference_wrapper<bool> >(std::once_flag&, void (std::__future_base::_State_base::*&&)(std::function<std::unique_ptr<std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter> ()>&, bool&), std::__future_base::_State_base* const&&, std::reference_wrapper<std::function<std::unique_ptr<std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter> ()> >&&, std::reference_wrapper<bool>&&) in Hello.o
+      void std::call_once<void (std::thread::*)(), std::reference_wrapper<std::thread> >(std::once_flag&, void (std::thread::*&&)(), std::reference_wrapper<std::thread>&&) in Hello.o
+      void std::__once_call_impl<std::_Bind_simple<std::_Mem_fn<void (std::__future_base::_State_base::*)(std::function<std::unique_ptr<std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter> ()>&, bool&)> (std::__future_base::_State_base*, std::reference_wrapper<std::function<std::unique_ptr<std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter> ()> >, std::reference_wrapper<bool>)> >() in Hello.o
+      void std::__once_call_impl<std::_Bind_simple<std::_Mem_fn<void (std::thread::*)()> (std::reference_wrapper<std::thread>)> >() in Hello.o
+ld: symbol(s) not found for architecture x86_64
+collect2: error: ld returned 1 exit status
+make: *** [Hello] Error 1
+
+07:31:40 Build Finished (took 10s.691ms)
+

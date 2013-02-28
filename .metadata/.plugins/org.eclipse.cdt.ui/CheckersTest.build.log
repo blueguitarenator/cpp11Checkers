@@ -1,0 +1,28 @@
+11:31:41 **** Incremental Build of configuration Debug for project CheckersTest ****
+make all 
+Building target: CheckersTest
+Invoking: MacOS X C++ Linker
+g++ -L"/Users/richardjohnson/Documents/Code/workspace/CheckersTest/lib" -L"/Users/richardjohnson/Documents/Code/workspace/Checkers/Debug" -o "CheckersTest"  ./BoardTest.o ./CheckerTest.o ./main.o   -lgmock -lCheckers -lgtest
+Finished building target: CheckersTest
+ 
+make --no-print-directory post-build
+./CheckersTest
+[==========] Running 2 tests from 2 test cases.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardTest
+[ RUN      ] BoardTest.BoardSquares
+[       OK ] BoardTest.BoardSquares (0 ms)
+[----------] 1 test from BoardTest (0 ms total)
+
+[----------] 1 test from CheckerTest
+[ RUN      ] CheckerTest.asdf
+[       OK ] CheckerTest.asdf (0 ms)
+[----------] 1 test from CheckerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 2 tests from 2 test cases ran. (0 ms total)
+[  PASSED  ] 2 tests.
+ 
+
+11:31:41 Build Finished (took 565ms)
+

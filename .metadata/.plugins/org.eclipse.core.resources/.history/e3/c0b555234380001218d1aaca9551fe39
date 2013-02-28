@@ -1,0 +1,34 @@
+/*
+ * Square.h
+ *
+ *  Created on: Feb 24, 2013
+ *      Author: richardjohnson
+ */
+
+#ifndef SQUARE_H_
+#define SQUARE_H_
+
+#include <memory>
+#include <gtest/gtest_prod.h>
+
+class Square {
+public:
+	Square(int index);
+	virtual ~Square();
+
+	void setNW(shared_ptr<Square> sq){m_nw = sq;}
+	void setNE(shared_ptr<Square> sq){m_ne = sq;}
+	void setSW(shared_ptr<Square> sq){m_sw = sq;}
+	void setSE(shared_ptr<Square> sq){m_se = sq;}
+private:
+	int m_index;
+	shared_ptr<Square> m_nw;
+	shared_ptr<Square> m_ne;
+	shared_ptr<Square> m_sw;
+	shared_ptr<Square> m_se;
+
+	FRIEND_TEST(BoardTest, BoardSquares);
+
+};
+
+#endif /* SQUARE_H_ */
