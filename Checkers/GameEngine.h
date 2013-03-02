@@ -8,17 +8,21 @@
 #ifndef GAMEENGINE_H_
 #define GAMEENGINE_H_
 
-class Board;
+#include "CheckerTypes.h"
+#include "Board.h"
 
 class GameEngine
 {
 public:
-	GameEngine(Board& board);
+	GameEngine();
 	virtual ~GameEngine();
 
-	void move();
+	bool hasJump(Checkers::Color color);
+	void computerMove();
+	bool humanMove(Checkers::Move move);
+	void showBoard();
 private:
-	Board& m_board;
+	Board m_board;
 };
 
 #endif /* GAMEENGINE_H_ */

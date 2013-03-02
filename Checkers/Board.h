@@ -25,15 +25,19 @@ public:
 	virtual ~Board();
 	Board(const Board&);
 
-	bool move(Checkers::Move move);
+	bool move(Checkers::Move move, bool isJump);
 	void print(std::ostream& os);
-	Checkers::Color getColor(int square) const;
-	Memento* createMemento();
 	std::vector<Checker*>& getComputerCheckers(){return m_black;}
+	std::vector<Checker*>& getHumanCheckers(){return m_red;}
+
+	Memento* createMemento();
+	void reinstateMemento(Memento* memento);
 private:
 	std::vector<Square*> m_board;
 	std::vector<Checker*> m_red;
 	std::vector<Checker*> m_black;
+
+	void removeChecker(Checker* checker);
 
 	FRIEND_TEST(BoardTest, BoardSquares);
 };

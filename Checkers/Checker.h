@@ -20,16 +20,17 @@ public:
 
 	int work(int x, int y);
 
-	bool move(Checkers::DirectionType dir);
+	//bool move(Checkers::DirectionType dir);
+	//bool jump(Checkers::DirectionType dir);
 	std::string show();
-	Checkers::Color getColor(){return m_color;}
-	Checker* getNeighbor(Checkers::DirectionType dir);
-	Square* getNeighborSquare(Checkers::DirectionType dir);
+	Checkers::Color getColor(){return m_myColor;}
 	int getIndex();
 	Square* getSquare(){return m_square;}
+	bool hasJump(Checkers::DirectionType dir);
+	void setSquare(Square* sq){m_square = sq;}
 private:
 	Square* m_square;
-	Checkers::Color m_color;
+	Checkers::Color m_myColor;
 };
 
 #endif /* CHECKER_H_ */

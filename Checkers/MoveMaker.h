@@ -21,6 +21,7 @@ public:
 	virtual ~MoveMaker();
 
 	Checkers::Move getMove();
+	Checkers::Move getJump();
 private:
 	Board& m_board;
 	//std::vector<Square*> m_board;
