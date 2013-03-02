@@ -1,3 +1,5 @@
+
+
 //============================================================================
 // Name        : CheckersApp.cpp
 // Author      : 
@@ -5,7 +7,7 @@
 // Copyright   : Your copyright notice
 // Description : Hello World in C++, Ansi-style
 //============================================================================
-
+#include "stdafx.h"
 #include <iostream>
 #include <Checkers/Board.h>
 #include <Checkers/CheckerTypes.h>
@@ -32,35 +34,18 @@ int main()
 	GameEngine engine(b);
 
 	print(b);
-	int piece = 0;
-	int dir = -1;
-	while (piece != 666)
+	Checkers::Move move = {Checkers::NE, 0};
+	while (move.index != 666)
 	{
-		Checkers::Move move;
 		cout << "Your Move" << endl;
 		cin >> move.index;
+		if (move.index > 31) continue;
 		cout << "Direction" << endl;
+		int dir;
 		cin >> dir;
-		if (dir == 0)
-		{
-			move.dir = Checkers::NW;
-			b.move(move);
-		}
-		else if (dir == 1)
-		{
-			move.dir = Checkers::NE;
-			b.move(move);
-		}
-		else if (dir == 2)
-		{
-			move.dir = Checkers::SW;
-			b.move(move);
-		}
-		else if (dir == 3)
-		{
-			move.dir = Checkers::SE;
-			b.move(move);
-		}
+		move.dir = static_cast<Checkers::DirectionType>(dir);
+		b.move(move);
+
 		print(b);
 		engine.move();
 		cout << "Computer moved" << endl;

@@ -8,6 +8,7 @@
 #ifndef BOARD_H_
 #define BOARD_H_
 
+
 #include <memory>
 #include <vector>
 #include "Square.h"
@@ -16,14 +17,19 @@
 #include "Checker.h"
 #include <gtest/gtest_prod.h>
 
+class Memento;
+
 class Board {
 public:
 	Board();
 	virtual ~Board();
+	Board(const Board&);
 
 	bool move(Checkers::Move move);
 	void print(std::ostream& os);
 	Checkers::Color getColor(int square) const;
+	Memento* createMemento();
+	std::vector<Checker*>& getComputerCheckers(){return m_black;}
 private:
 	std::vector<Square*> m_board;
 	std::vector<Checker*> m_red;

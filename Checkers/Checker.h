@@ -24,7 +24,9 @@ public:
 	std::string show();
 	Checkers::Color getColor(){return m_color;}
 	Checker* getNeighbor(Checkers::DirectionType dir);
+	Square* getNeighborSquare(Checkers::DirectionType dir);
 	int getIndex();
+	Square* getSquare(){return m_square;}
 private:
 	Square* m_square;
 	Checkers::Color m_color;

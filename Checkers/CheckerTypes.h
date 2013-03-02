@@ -20,10 +20,10 @@ namespace Checkers
 
 	enum DirectionType
 	{
-		NE,
 		NW,
-		SE,
-		SW
+		NE,
+		SW,
+		SE
 	};
 
 	struct Move

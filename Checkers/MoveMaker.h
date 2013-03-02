@@ -17,14 +17,15 @@ class Square;
 
 class MoveMaker {
 public:
-	MoveMaker(const Board& board);
+	MoveMaker(Board& board);
 	virtual ~MoveMaker();
 
 	Checkers::Move getMove();
 private:
-	std::vector<Square*> m_board;
-	std::vector<Checker*> m_red;
-	std::vector<Checker*> m_black;
+	Board& m_board;
+	//std::vector<Square*> m_board;
+	//std::vector<Checker*> m_red;
+	//std::vector<Checker*> m_black;
 
 };
 

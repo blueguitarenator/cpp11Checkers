@@ -4,7 +4,7 @@
  *  Created on: Feb 24, 2013
  *      Author: richardjohnson
  */
-
+#include "stdafx.h"
 #include "Checker.h"
 #include <memory>
 
@@ -25,6 +25,25 @@ Checker::~Checker()
 int Checker::getIndex()
 {
 	return m_square->getIndex();
+}
+
+Square* Checker::getNeighborSquare(Checkers::DirectionType dir)
+{
+	Square* square = nullptr;
+	switch(dir)
+	{
+	case Checkers::NE:
+		return m_square->getNE();
+	case Checkers::NW:
+		return m_square->getNW();
+	case Checkers::SE:
+		return m_square->getSE();
+	case Checkers::SW:
+		return m_square->getSW();
+	default:
+		break;
+	}
+	return square;
 }
 
 Checker* Checker::getNeighbor(Checkers::DirectionType dir)
@@ -89,6 +108,7 @@ bool Checker::move(Checkers::DirectionType dir)
 		{
 			m_square->setChecker(nullptr);
 			m_square->getNE()->setChecker(this);
+			m_square = m_square->getNE();
 			return true;
 		}
 	}
@@ -98,6 +118,7 @@ bool Checker::move(Checkers::DirectionType dir)
 		{
 			m_square->setChecker(nullptr);
 			m_square->getNW()->setChecker(this);
+			m_square = m_square->getNW();
 			return true;
 		}
 	}
@@ -107,6 +128,7 @@ bool Checker::move(Checkers::DirectionType dir)
 		{
 			m_square->setChecker(nullptr);
 			m_square->getSE()->setChecker(this);
+			m_square = m_square->getSE();
 			return true;
 		}
 	}
@@ -116,6 +138,7 @@ bool Checker::move(Checkers::DirectionType dir)
 		{
 			m_square->setChecker(nullptr);
 			m_square->getSW()->setChecker(this);
+			m_square = m_square->getSW();
 			return true;
 		}
 	}

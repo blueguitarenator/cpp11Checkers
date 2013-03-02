@@ -4,7 +4,7 @@
  *  Created on: Feb 27, 2013
  *      Author: richardjohnson
  */
-
+#include "stdafx.h"
 #include "GameEngine.h"
 #include "Board.h"
 #include "CheckerTypes.h"
@@ -37,9 +37,10 @@ void bar()
 
 void GameEngine::move()
 {
-	MoveMaker mm(m_board);
+	Board boardCopy(m_board);
+	MoveMaker mm(boardCopy);
 
 	m_board.move(mm.getMove());
 //	future<int> f1 = async(foo);
-//	future<void> f1(async(bar));
+	future<void> f1(async(bar));
 }

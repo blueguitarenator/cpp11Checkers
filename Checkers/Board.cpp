@@ -4,13 +4,12 @@
  *  Created on: Feb 24, 2013
  *      Author: richardjohnson
  */
-
+#include "stdafx.h"
 #include "Board.h"
 
 using namespace std;
 
 	/*
-	 *
 	 *   28  29  30  31
 	 * 24  25  26  27
 	 *   20  21  22  23
@@ -20,6 +19,9 @@ using namespace std;
 	 *   4   5   6   7
 	 * 0   1   2   3
 	 */
+
+void linkBoard(vector<Square*>& board);
+
 Board::Board()
 {
 	for (int i = 0; i < 32; ++i)
@@ -51,87 +53,120 @@ Board::Board()
 	m_black.push_back(new Checker(m_board.at(30), Checkers::BLACK));
 	m_black.push_back(new Checker(m_board.at(31), Checkers::BLACK));
 
-	int x = 0;
-	m_board.at(x)->setSW(nullptr);m_board.at(x)->setSE(nullptr);           m_board.at(x)->setNW(nullptr);           m_board.at(x)->setNE(m_board.at(x+4));
-	x = 1;
-	m_board.at(x)->setSW(nullptr);           m_board.at(x)->setSE(nullptr);           m_board.at(x)->setNW(m_board.at(x+3));m_board.at(x)->setNE(m_board.at(x+4));
-	x = 2;
-	m_board.at(x)->setSW(nullptr);           m_board.at(x)->setSE(nullptr);           m_board.at(x)->setNW(m_board.at(x+3));m_board.at(x)->setNE(m_board.at(x+4));
-	x = 3;
-	m_board.at(x)->setSW(nullptr);           m_board.at(x)->setSE(nullptr);           m_board.at(x)->setNW(m_board.at(x+3));m_board.at(x)->setNE(m_board.at(x+4));
-	x = 4;
-	m_board.at(x)->setSW(m_board.at(x-4));m_board.at(x)->setSE(m_board.at(x-3));m_board.at(x)->setNW(m_board.at(x+4));m_board.at(x)->setNE(m_board.at(x+5));
-	x = 5;
-	m_board.at(x)->setSW(m_board.at(x-4));m_board.at(x)->setSE(m_board.at(x-3));m_board.at(x)->setNW(m_board.at(x+4));m_board.at(x)->setNE(m_board.at(x+5));
-	x = 6;
-	m_board.at(x)->setSW(m_board.at(x-4));m_board.at(x)->setSE(m_board.at(x-3));m_board.at(x)->setNW(m_board.at(x+4));m_board.at(x)->setNE(m_board.at(x+5));
-	x = 7;
-	m_board.at(x)->setSW(m_board.at(x-4));m_board.at(x)->setSE(nullptr);           m_board.at(x)->setNW(m_board.at(x+4));m_board.at(x)->setNE(nullptr);
-	x = 8;
-	m_board.at(x)->setSW(nullptr);           m_board.at(x)->setSE(m_board.at(x-4));m_board.at(x)->setNW(nullptr);           m_board.at(x)->setNE(m_board.at(x+4));
-	x = 9;
-	m_board.at(x)->setSW(m_board.at(x-5));m_board.at(x)->setSE(m_board.at(x-4));m_board.at(x)->setNW(m_board.at(x+3));m_board.at(x)->setNE(m_board.at(x+4));
-	x = 10;
-	m_board.at(x)->setSW(m_board.at(x-5));m_board.at(x)->setSE(m_board.at(x-4));m_board.at(x)->setNW(m_board.at(x+3));m_board.at(x)->setNE(m_board.at(x+4));
-	x = 11;
-	m_board.at(x)->setSW(m_board.at(x-5));m_board.at(x)->setSE(m_board.at(x-4));m_board.at(x)->setNW(m_board.at(x+3));m_board.at(x)->setNE(m_board.at(x+4));
-	x = 12;
-	m_board.at(x)->setSW(m_board.at(x-4));m_board.at(x)->setSE(m_board.at(x-3));m_board.at(x)->setNW(m_board.at(x+4));m_board.at(x)->setNE(m_board.at(x+5));
-	x = 13;
-	m_board.at(x)->setSW(m_board.at(x-4));m_board.at(x)->setSE(m_board.at(x-3));m_board.at(x)->setNW(m_board.at(x+4));m_board.at(x)->setNE(m_board.at(x+5));
-	x = 14;
-	m_board.at(x)->setSW(m_board.at(x-4));m_board.at(x)->setSE(m_board.at(x-3));m_board.at(x)->setNW(m_board.at(x+4));m_board.at(x)->setNE(m_board.at(x+5));
-	x = 15;
-	m_board.at(x)->setSW(m_board.at(x-4));m_board.at(x)->setSE(nullptr);           m_board.at(x)->setNW(m_board.at(x+4));m_board.at(x)->setNE(nullptr);
-	x = 16;
-	m_board.at(x)->setSW(nullptr);           m_board.at(x)->setSE(m_board.at(x-4));m_board.at(x)->setNW(nullptr);           m_board.at(x)->setNE(m_board.at(x+4));
-	x = 17;
-	m_board.at(x)->setSW(m_board.at(x-5));m_board.at(x)->setSE(m_board.at(x-4));m_board.at(x)->setNW(m_board.at(x+3));m_board.at(x)->setNE(m_board.at(x+4));
-	x = 18;
-	m_board.at(x)->setSW(m_board.at(x-5));m_board.at(x)->setSE(m_board.at(x-4));m_board.at(x)->setNW(m_board.at(x+3));m_board.at(x)->setNE(m_board.at(x+4));
-	x = 19;
-	m_board.at(x)->setSW(m_board.at(x-5));m_board.at(x)->setSE(m_board.at(x-4));m_board.at(x)->setNW(m_board.at(x+3));m_board.at(x)->setNE(m_board.at(x+4));
-	x = 20;
-	m_board.at(x)->setSW(m_board.at(x-4));m_board.at(x)->setSE(m_board.at(x-3));m_board.at(x)->setNW(m_board.at(x+4));m_board.at(x)->setNE(m_board.at(x+5));
-	x = 21;
-	m_board.at(x)->setSW(m_board.at(x-4));m_board.at(x)->setSE(m_board.at(x-3));m_board.at(x)->setNW(m_board.at(x+4));m_board.at(x)->setNE(m_board.at(x+5));
-	x = 22;
-	m_board.at(x)->setSW(m_board.at(x-4));m_board.at(x)->setSE(m_board.at(x-3));m_board.at(x)->setNW(m_board.at(x+4));m_board.at(x)->setNE(m_board.at(x+5));
-	x = 23;
-	m_board.at(x)->setSW(m_board.at(x-4));m_board.at(x)->setSE(nullptr);           m_board.at(x)->setNW(m_board.at(x+4));m_board.at(x)->setNE(nullptr);
-	x = 24;
-	m_board.at(x)->setSW(nullptr);           m_board.at(x)->setSE(m_board.at(x-4));m_board.at(x)->setNW(nullptr);           m_board.at(x)->setNE(m_board.at(x+4));
-	x = 25;
-	m_board.at(x)->setSW(m_board.at(x-5));m_board.at(x)->setSE(m_board.at(x-4));m_board.at(x)->setNW(m_board.at(x+3));m_board.at(x)->setNE(m_board.at(x+4));
-	x = 26;
-	m_board.at(x)->setSW(m_board.at(x-5));m_board.at(x)->setSE(m_board.at(x-4));m_board.at(x)->setNW(m_board.at(x+3));m_board.at(x)->setNE(m_board.at(x+4));
-	x = 27;
-	m_board.at(x)->setSW(m_board.at(x-5));m_board.at(x)->setSE(m_board.at(x-4));m_board.at(x)->setNW(m_board.at(x+3));m_board.at(x)->setNE(m_board.at(x+4));
-	x = 28;
-	m_board.at(x)->setSW(m_board.at(x-4));m_board.at(x)->setSE(m_board.at(x-3));m_board.at(x)->setNW(nullptr);           m_board.at(x)->setNE(nullptr);
-	x = 29;
-	m_board.at(x)->setSW(m_board.at(x-4));m_board.at(x)->setSE(m_board.at(x-3));m_board.at(x)->setNW(nullptr);           m_board.at(x)->setNE(nullptr);
-	x = 30;
-	m_board.at(x)->setSW(m_board.at(x-4));m_board.at(x)->setSE(m_board.at(x-3));m_board.at(x)->setNW(nullptr);           m_board.at(x)->setNE(nullptr);
-	x = 31;
-	m_board.at(x)->setSW(m_board.at(x-4));m_board.at(x)->setSE(nullptr);           m_board.at(x)->setNW(nullptr);           m_board.at(x)->setNE(nullptr);
+	linkBoard(m_board);
 
+}
 
-	/*
-	 *   28  29  30  31
-	 * 24  25  26  27
-	 *   20  21  22  23
-	 * 16  17  18  19
-	 *   12  13  14  15
-	 * 8   9   10  11
-	 *   4   5   6   7
-	 * 0   1   2   3
-	 */
-
+Board::Board(const Board& cpy)
+{
+	for (auto it = cpy.m_board.begin(); it != cpy.m_board.end(); ++it)
+	{
+		Square* otherSquare = *it;
+		Square* sq = new Square(otherSquare->getIndex());
+		Checker* otherChecker = otherSquare->getChecker();
+		if (otherChecker != nullptr)
+		{
+			Checkers::Color color = otherChecker->getColor();
+			Checker* checker = new Checker(sq, color);
+			if (color == Checkers::BLACK)
+			{
+				m_black.push_back(checker);
+			}
+			else
+			{
+				m_red.push_back(checker);
+			}
+		}
+		m_board.push_back(sq);
+	}
+	linkBoard(m_board);
 }
 
 Board::~Board()
 {
+	for (auto it = m_board.begin(); it != m_board.end(); ++it)
+	{
+		Checker* checker = (*it)->getChecker();
+		if (checker != nullptr)
+		{
+			delete checker;
+			checker = nullptr;
+		}
+		delete *it;
+	}
+}
+
+Memento* Board::createMemento()
+{
+	return nullptr;
+}
+
+void linkBoard(vector<Square*>& board)
+{
+	int x = 0;
+	board.at(x)->setSW(nullptr);board.at(x)->setSE(nullptr);           board.at(x)->setNW(nullptr);           board.at(x)->setNE(board.at(x+4));
+	x = 1;
+	board.at(x)->setSW(nullptr);           board.at(x)->setSE(nullptr);           board.at(x)->setNW(board.at(x+3));board.at(x)->setNE(board.at(x+4));
+	x = 2;
+	board.at(x)->setSW(nullptr);           board.at(x)->setSE(nullptr);           board.at(x)->setNW(board.at(x+3));board.at(x)->setNE(board.at(x+4));
+	x = 3;
+	board.at(x)->setSW(nullptr);           board.at(x)->setSE(nullptr);           board.at(x)->setNW(board.at(x+3));board.at(x)->setNE(board.at(x+4));
+	x = 4;
+	board.at(x)->setSW(board.at(x-4));board.at(x)->setSE(board.at(x-3));board.at(x)->setNW(board.at(x+4));board.at(x)->setNE(board.at(x+5));
+	x = 5;
+	board.at(x)->setSW(board.at(x-4));board.at(x)->setSE(board.at(x-3));board.at(x)->setNW(board.at(x+4));board.at(x)->setNE(board.at(x+5));
+	x = 6;
+	board.at(x)->setSW(board.at(x-4));board.at(x)->setSE(board.at(x-3));board.at(x)->setNW(board.at(x+4));board.at(x)->setNE(board.at(x+5));
+	x = 7;
+	board.at(x)->setSW(board.at(x-4));board.at(x)->setSE(nullptr);           board.at(x)->setNW(board.at(x+4));board.at(x)->setNE(nullptr);
+	x = 8;
+	board.at(x)->setSW(nullptr);           board.at(x)->setSE(board.at(x-4));board.at(x)->setNW(nullptr);           board.at(x)->setNE(board.at(x+4));
+	x = 9;
+	board.at(x)->setSW(board.at(x-5));board.at(x)->setSE(board.at(x-4));board.at(x)->setNW(board.at(x+3));board.at(x)->setNE(board.at(x+4));
+	x = 10;
+	board.at(x)->setSW(board.at(x-5));board.at(x)->setSE(board.at(x-4));board.at(x)->setNW(board.at(x+3));board.at(x)->setNE(board.at(x+4));
+	x = 11;
+	board.at(x)->setSW(board.at(x-5));board.at(x)->setSE(board.at(x-4));board.at(x)->setNW(board.at(x+3));board.at(x)->setNE(board.at(x+4));
+	x = 12;
+	board.at(x)->setSW(board.at(x-4));board.at(x)->setSE(board.at(x-3));board.at(x)->setNW(board.at(x+4));board.at(x)->setNE(board.at(x+5));
+	x = 13;
+	board.at(x)->setSW(board.at(x-4));board.at(x)->setSE(board.at(x-3));board.at(x)->setNW(board.at(x+4));board.at(x)->setNE(board.at(x+5));
+	x = 14;
+	board.at(x)->setSW(board.at(x-4));board.at(x)->setSE(board.at(x-3));board.at(x)->setNW(board.at(x+4));board.at(x)->setNE(board.at(x+5));
+	x = 15;
+	board.at(x)->setSW(board.at(x-4));board.at(x)->setSE(nullptr);           board.at(x)->setNW(board.at(x+4));board.at(x)->setNE(nullptr);
+	x = 16;
+	board.at(x)->setSW(nullptr);           board.at(x)->setSE(board.at(x-4));board.at(x)->setNW(nullptr);           board.at(x)->setNE(board.at(x+4));
+	x = 17;
+	board.at(x)->setSW(board.at(x-5));board.at(x)->setSE(board.at(x-4));board.at(x)->setNW(board.at(x+3));board.at(x)->setNE(board.at(x+4));
+	x = 18;
+	board.at(x)->setSW(board.at(x-5));board.at(x)->setSE(board.at(x-4));board.at(x)->setNW(board.at(x+3));board.at(x)->setNE(board.at(x+4));
+	x = 19;
+	board.at(x)->setSW(board.at(x-5));board.at(x)->setSE(board.at(x-4));board.at(x)->setNW(board.at(x+3));board.at(x)->setNE(board.at(x+4));
+	x = 20;
+	board.at(x)->setSW(board.at(x-4));board.at(x)->setSE(board.at(x-3));board.at(x)->setNW(board.at(x+4));board.at(x)->setNE(board.at(x+5));
+	x = 21;
+	board.at(x)->setSW(board.at(x-4));board.at(x)->setSE(board.at(x-3));board.at(x)->setNW(board.at(x+4));board.at(x)->setNE(board.at(x+5));
+	x = 22;
+	board.at(x)->setSW(board.at(x-4));board.at(x)->setSE(board.at(x-3));board.at(x)->setNW(board.at(x+4));board.at(x)->setNE(board.at(x+5));
+	x = 23;
+	board.at(x)->setSW(board.at(x-4));board.at(x)->setSE(nullptr);           board.at(x)->setNW(board.at(x+4));board.at(x)->setNE(nullptr);
+	x = 24;
+	board.at(x)->setSW(nullptr);           board.at(x)->setSE(board.at(x-4));board.at(x)->setNW(nullptr);           board.at(x)->setNE(board.at(x+4));
+	x = 25;
+	board.at(x)->setSW(board.at(x-5));board.at(x)->setSE(board.at(x-4));board.at(x)->setNW(board.at(x+3));board.at(x)->setNE(board.at(x+4));
+	x = 26;
+	board.at(x)->setSW(board.at(x-5));board.at(x)->setSE(board.at(x-4));board.at(x)->setNW(board.at(x+3));board.at(x)->setNE(board.at(x+4));
+	x = 27;
+	board.at(x)->setSW(board.at(x-5));board.at(x)->setSE(board.at(x-4));board.at(x)->setNW(board.at(x+3));board.at(x)->setNE(board.at(x+4));
+	x = 28;
+	board.at(x)->setSW(board.at(x-4));board.at(x)->setSE(board.at(x-3));board.at(x)->setNW(nullptr);           board.at(x)->setNE(nullptr);
+	x = 29;
+	board.at(x)->setSW(board.at(x-4));board.at(x)->setSE(board.at(x-3));board.at(x)->setNW(nullptr);           board.at(x)->setNE(nullptr);
+	x = 30;
+	board.at(x)->setSW(board.at(x-4));board.at(x)->setSE(board.at(x-3));board.at(x)->setNW(nullptr);           board.at(x)->setNE(nullptr);
+	x = 31;
+	board.at(x)->setSW(board.at(x-4));board.at(x)->setSE(nullptr);           board.at(x)->setNW(nullptr);           board.at(x)->setNE(nullptr);
 }
 
 void Board::print(ostream& os)
@@ -144,16 +179,29 @@ void Board::print(ostream& os)
 	os << "  | " << m_board.at(12)->show() << " | " << m_board.at(13)->show() << " | " << m_board.at(14)->show() << " | " << m_board.at(15)->show() << " | \n";
 	os << "| " << m_board.at(8)->show() << " | " << m_board.at(9)->show() << " | " << m_board.at(10)->show() << " | " << m_board.at(11)->show() << " | \n";
 	os << "  | " << m_board.at(4)->show() << " | " << m_board.at(5)->show() << " | " << m_board.at(6)->show() << " | " << m_board.at(7)->show() << " | \n";
-	os << "| " << m_board.at(0)->show() << " | " << m_board.at(1)->show() << " | " << m_board.at(3)->show() << " | " << m_board.at(4)->show() << " | \n";
+	os << "| " << m_board.at(0)->show() << " | " << m_board.at(1)->show() << " | " << m_board.at(2)->show() << " | " << m_board.at(3)->show() << " | \n";
+	os << "\n";
+	os << "  | " << "28" << " | " << "29" << " | " << "30" << " | " << "31" << " |\n";
+	os << "| " << "24" << " | " << "25" << " | " << "26" << " | " << "27" << " |\n";
+	os << "  | " << "20" << " | " << "21" << " | " << "22" << " | " << "23" << " |\n";
+	os << "| " << "16" << " | " << "17" << " | " << "18" << " | " << "19" << " |\n";
+	os << "  | " << "12" << " | " << "13" << " | " << "14" << " | " << "15" << " |\n";
+	os << "| " << "08" << " | " << "09" << " | " << "10" << " | " << "11" << " |\n";
+	os << "  | " << "04" << " | " << "05" << " | " << "06" << " | " << "07" << " |\n";
+	os << "| " << "00" << " | " << "01" << " | " << "02" << " | " << "03" << " |\n";
+	os << "NW(0) NE(1) SW(2) SE(3)\n";
 }
 
 bool Board::move(Checkers::Move move)
 {
-	auto square = m_board.at(move.index);
-	if (!square->isEmpty())
+	if (move.index >= 0)
 	{
-		auto checker = square->getChecker();
-		return checker->move(move.dir);
+		auto square = m_board.at(move.index);
+		if (!square->isEmpty())
+		{
+			auto checker = square->getChecker();
+			return checker->move(move.dir);
+		}
 	}
 	return false;
 }

@@ -4,7 +4,7 @@
  *  Created on: Feb 24, 2013
  *      Author: richardjohnson
  */
-
+#include "stdafx.h"
 #include "Square.h"
 #include "Checker.h"
 
