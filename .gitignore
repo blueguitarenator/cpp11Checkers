@@ -1,9 +1,8 @@
-Checkers/Debug/*
-CheckersTest/Debug/*
-CheckersApp/Debug/*
 .metadata/**
 *.[oa]
 *.o
+*.mk
+*.d
 *.a
 *.so
 *.dll

@@ -11,6 +11,13 @@
 
 namespace Checkers
 {
+	enum Color
+	{
+		RED,
+		BLACK,
+		EMPTY
+	};
+
 	enum DirectionType
 	{
 		NE,
@@ -18,6 +25,13 @@ namespace Checkers
 		SE,
 		SW
 	};
+
+	struct Move
+	{
+		DirectionType dir;
+		int index;
+	};
+
 }
 
 #endif /* CHECKERTYPES_H_ */

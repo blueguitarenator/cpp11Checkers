@@ -1,8 +1,8 @@
 The board
   | O | O | O | O | 
 | O | O | O | O | 
-  | O | O | O | _ | 
-| _ | _ | _ | O | 
+  | O | O | O | O | 
+| _ | _ | _ | _ | 
   | X | _ | _ | _ | 
 | _ | X | X | X | 
   | X | X | X | X | 

@@ -10,6 +10,7 @@
 #include "CheckerTypes.h"
 #include <future>
 #include <iostream>
+#include "MoveMaker.h"
 
 using namespace std;
 
@@ -36,7 +37,9 @@ void bar()
 
 void GameEngine::move()
 {
-	m_board.move(23, Checkers::SW);
+	MoveMaker mm(m_board);
+
+	m_board.move(mm.getMove());
 //	future<int> f1 = async(foo);
 //	future<void> f1(async(bar));
 }

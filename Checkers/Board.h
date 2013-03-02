@@ -13,19 +13,17 @@
 #include "Square.h"
 #include "CheckerTypes.h"
 #include <fstream>
-
-
+#include "Checker.h"
 #include <gtest/gtest_prod.h>
-
-class Checker;
 
 class Board {
 public:
 	Board();
 	virtual ~Board();
 
-	bool move(int from, Checkers::DirectionType dir);
+	bool move(Checkers::Move move);
 	void print(std::ostream& os);
+	Checkers::Color getColor(int square) const;
 private:
 	std::vector<Square*> m_board;
 	std::vector<Checker*> m_red;

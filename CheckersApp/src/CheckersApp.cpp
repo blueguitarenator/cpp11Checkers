@@ -36,25 +36,30 @@ int main()
 	int dir = -1;
 	while (piece != 666)
 	{
+		Checkers::Move move;
 		cout << "Your Move" << endl;
-		cin >> piece;
+		cin >> move.index;
 		cout << "Direction" << endl;
 		cin >> dir;
 		if (dir == 0)
 		{
-			b.move(piece, Checkers::NW);
+			move.dir = Checkers::NW;
+			b.move(move);
 		}
 		else if (dir == 1)
 		{
-			b.move(piece, Checkers::NE);
+			move.dir = Checkers::NE;
+			b.move(move);
 		}
 		else if (dir == 2)
 		{
-			b.move(piece, Checkers::SW);
+			move.dir = Checkers::SW;
+			b.move(move);
 		}
 		else if (dir == 3)
 		{
-			b.move(piece, Checkers::SE);
+			move.dir = Checkers::SE;
+			b.move(move);
 		}
 		print(b);
 		engine.move();

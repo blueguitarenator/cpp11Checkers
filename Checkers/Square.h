@@ -30,6 +30,7 @@ public:
 	void setChecker(Checker* checker){m_checker = checker;}
 	Checker* getChecker(){return m_checker;}
 	std::string show();
+	int getIndex(){return m_index;}
 private:
 	int m_index;
 	Checker* m_checker;

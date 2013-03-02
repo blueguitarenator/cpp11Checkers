@@ -15,22 +15,19 @@
 
 class Checker {
 public:
-	enum Color
-	{
-		RED,
-		BLACK
-	};
-	Checker(Square* square, Color color);
+	Checker(Square* square, Checkers::Color color);
 	virtual ~Checker();
 
 	int work(int x, int y);
 
 	bool move(Checkers::DirectionType dir);
 	std::string show();
-	Color getColor(){return m_color;}
+	Checkers::Color getColor(){return m_color;}
+	Checker* getNeighbor(Checkers::DirectionType dir);
+	int getIndex();
 private:
 	Square* m_square;
-	Color m_color;
+	Checkers::Color m_color;
 };
 
 #endif /* CHECKER_H_ */

@@ -6,7 +6,6 @@
  */
 
 #include "Board.h"
-#include "Checker.h"
 
 using namespace std;
 
@@ -27,30 +26,30 @@ Board::Board()
 	{
 		m_board.push_back(new Square(i));
 	}
-	m_red.push_back(new Checker(m_board.at(0), Checker::RED));
-	m_red.push_back(new Checker(m_board.at(1), Checker::RED));
-	m_red.push_back(new Checker(m_board.at(2), Checker::RED));
-	m_red.push_back(new Checker(m_board.at(3), Checker::RED));
-	m_red.push_back(new Checker(m_board.at(4), Checker::RED));
-	m_red.push_back(new Checker(m_board.at(5), Checker::RED));
-	m_red.push_back(new Checker(m_board.at(6), Checker::RED));
-	m_red.push_back(new Checker(m_board.at(7), Checker::RED));
-	m_red.push_back(new Checker(m_board.at(8), Checker::RED));
-	m_red.push_back(new Checker(m_board.at(9), Checker::RED));
-	m_red.push_back(new Checker(m_board.at(10), Checker::RED));
-	m_red.push_back(new Checker(m_board.at(11), Checker::RED));
-	m_black.push_back(new Checker(m_board.at(20), Checker::BLACK));
-	m_black.push_back(new Checker(m_board.at(21), Checker::BLACK));
-	m_black.push_back(new Checker(m_board.at(22), Checker::BLACK));
-	m_black.push_back(new Checker(m_board.at(23), Checker::BLACK));
-	m_black.push_back(new Checker(m_board.at(24), Checker::BLACK));
-	m_black.push_back(new Checker(m_board.at(25), Checker::BLACK));
-	m_black.push_back(new Checker(m_board.at(26), Checker::BLACK));
-	m_black.push_back(new Checker(m_board.at(27), Checker::BLACK));
-	m_black.push_back(new Checker(m_board.at(28), Checker::BLACK));
-	m_black.push_back(new Checker(m_board.at(29), Checker::BLACK));
-	m_black.push_back(new Checker(m_board.at(30), Checker::BLACK));
-	m_black.push_back(new Checker(m_board.at(31), Checker::BLACK));
+	m_red.push_back(new Checker(m_board.at(0), Checkers::RED));
+	m_red.push_back(new Checker(m_board.at(1), Checkers::RED));
+	m_red.push_back(new Checker(m_board.at(2), Checkers::RED));
+	m_red.push_back(new Checker(m_board.at(3), Checkers::RED));
+	m_red.push_back(new Checker(m_board.at(4), Checkers::RED));
+	m_red.push_back(new Checker(m_board.at(5), Checkers::RED));
+	m_red.push_back(new Checker(m_board.at(6), Checkers::RED));
+	m_red.push_back(new Checker(m_board.at(7), Checkers::RED));
+	m_red.push_back(new Checker(m_board.at(8), Checkers::RED));
+	m_red.push_back(new Checker(m_board.at(9), Checkers::RED));
+	m_red.push_back(new Checker(m_board.at(10), Checkers::RED));
+	m_red.push_back(new Checker(m_board.at(11), Checkers::RED));
+	m_black.push_back(new Checker(m_board.at(20), Checkers::BLACK));
+	m_black.push_back(new Checker(m_board.at(21), Checkers::BLACK));
+	m_black.push_back(new Checker(m_board.at(22), Checkers::BLACK));
+	m_black.push_back(new Checker(m_board.at(23), Checkers::BLACK));
+	m_black.push_back(new Checker(m_board.at(24), Checkers::BLACK));
+	m_black.push_back(new Checker(m_board.at(25), Checkers::BLACK));
+	m_black.push_back(new Checker(m_board.at(26), Checkers::BLACK));
+	m_black.push_back(new Checker(m_board.at(27), Checkers::BLACK));
+	m_black.push_back(new Checker(m_board.at(28), Checkers::BLACK));
+	m_black.push_back(new Checker(m_board.at(29), Checkers::BLACK));
+	m_black.push_back(new Checker(m_board.at(30), Checkers::BLACK));
+	m_black.push_back(new Checker(m_board.at(31), Checkers::BLACK));
 
 	int x = 0;
 	m_board.at(x)->setSW(nullptr);m_board.at(x)->setSE(nullptr);           m_board.at(x)->setNW(nullptr);           m_board.at(x)->setNE(m_board.at(x+4));
@@ -148,15 +147,25 @@ void Board::print(ostream& os)
 	os << "| " << m_board.at(0)->show() << " | " << m_board.at(1)->show() << " | " << m_board.at(3)->show() << " | " << m_board.at(4)->show() << " | \n";
 }
 
-bool Board::move(int from , Checkers::DirectionType dir)
+bool Board::move(Checkers::Move move)
 {
-	auto square = m_board.at(from);
+	auto square = m_board.at(move.index);
 	if (!square->isEmpty())
 	{
 		auto checker = square->getChecker();
-		return checker->move(dir);
+		return checker->move(move.dir);
 	}
 	return false;
+}
+
+Checkers::Color Board::getColor(int square) const
+{
+	Checker* checker = m_board.at(square)->getChecker();
+	if (checker != nullptr)
+	{
+		return checker->getColor();
+	}
+	return Checkers::EMPTY;
 }
 
 
