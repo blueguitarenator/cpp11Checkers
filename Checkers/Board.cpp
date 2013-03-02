@@ -101,6 +101,11 @@ Memento* Board::createMemento()
 	return nullptr;
 }
 
+void Board::reinstateMemento(Memento* memento)
+{
+
+}
+
 void linkBoard(vector<Square*>& board)
 {
 	int x = 0;
@@ -192,7 +197,7 @@ void Board::print(ostream& os)
 	os << "NW(0) NE(1) SW(2) SE(3)\n";
 }
 
-bool Board::move(Checkers::Move move)
+bool Board::move(Checkers::Move move, bool isJump)
 {
 	if (move.index >= 0)
 	{
@@ -200,20 +205,65 @@ bool Board::move(Checkers::Move move)
 		if (!square->isEmpty())
 		{
 			auto checker = square->getChecker();
-			return checker->move(move.dir);
+			if (isJump)
+			{
+				Square* neighbor = Checkers::getNeighborSquare(square, move.dir);
+				Square* jumpSquare = Checkers::getNeighborSquare(neighbor, move.dir);
+				Checker* jumpedChecker = neighbor->getChecker();
+				neighbor->setChecker(nullptr);
+				square->setChecker(nullptr);
+				jumpSquare->setChecker(checker);
+				checker->setSquare(jumpSquare);
+				removeChecker(jumpedChecker);
+				return true;
+			}
+			else
+			{
+				Square* neighbor = Checkers::getNeighborSquare(square, move.dir);
+				if (neighbor != nullptr && neighbor->isEmpty())
+				{
+					square->setChecker(nullptr);
+					neighbor->setChecker(checker);
+					checker->setSquare(neighbor);
+					return true;
+				}
+			}
 		}
 	}
 	return false;
 }
 
-Checkers::Color Board::getColor(int square) const
+void Board::removeChecker(Checker* checker)
 {
-	Checker* checker = m_board.at(square)->getChecker();
-	if (checker != nullptr)
+	auto it = m_red.begin();
+	for (; it != m_red.end(); ++it)
 	{
-		return checker->getColor();
+		if (*it == checker)
+		{
+			break;
+		}
 	}
-	return Checkers::EMPTY;
+	if (it != m_red.end())
+	{
+		m_red.erase(it);
+		delete checker;
+		checker = nullptr;
+	}
+	else
+	{
+		it = m_black.begin();
+		for (; it != m_black.end(); ++it)
+		{
+			if (*it == checker)
+			{
+				break;
+			}
+		}
+		if (it != m_black.end())
+		{
+			m_black.erase(it);
+			delete checker;
+			checker = nullptr;
+		}
+	}
 }
-
-

@@ -9,14 +9,12 @@
 //============================================================================
 #include "stdafx.h"
 #include <iostream>
-#include <Checkers/Board.h>
 #include <Checkers/CheckerTypes.h>
 #include <Checkers/GameEngine.h>
 #include <fstream>
 
 using namespace std;
 
-void print(Board& b);
 /*
  *   28  29  30  31
  * 24  25  26  27
@@ -30,38 +28,34 @@ void print(Board& b);
 
 int main()
 {
-	Board b;
-	GameEngine engine(b);
-
-	print(b);
+	GameEngine engine;
+	engine.showBoard();
 	Checkers::Move move = {Checkers::NE, 0};
 	while (move.index != 666)
 	{
 		cout << "Your Move" << endl;
-		cin >> move.index;
-		if (move.index > 31) continue;
-		cout << "Direction" << endl;
-		int dir;
-		cin >> dir;
-		move.dir = static_cast<Checkers::DirectionType>(dir);
-		b.move(move);
+		bool moved = false;
+		while (!moved)
+		{
+			cin >> move.index;
+			if (move.index > 31) continue;
+			cout << "Direction" << endl;
+			int dir;
+			cin >> dir;
+			move.dir = static_cast<Checkers::DirectionType>(dir);
+			moved = engine.humanMove(move);
+			if (!moved)
+			{
+				cout << "Invalid move or you must jump" << endl;
+			}
+		}
 
-		print(b);
-		engine.move();
+		engine.showBoard();
+		engine.computerMove();
 		cout << "Computer moved" << endl;
-		print(b);
+		engine.showBoard();
 	}
 
 	cout << "!!!Goodbye Checkers!!!" << endl;
 	return 0;
-}
-
-void print(Board& b)
-{
-	ofstream myfile;
-	myfile.open ("game.txt", ios::out | ios::trunc);
-	b.print(myfile);
-
-	myfile.close();
-
 }
