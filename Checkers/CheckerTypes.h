@@ -33,6 +33,12 @@ runaway checkers (unimpeded path to be kinged) and other minor factors.
 namespace Checkers
 {
 
+	enum Color
+	{
+		RED,
+		BLACK
+	};
+
 	enum DirectionType
 	{
 		NW,

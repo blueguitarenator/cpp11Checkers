@@ -32,7 +32,7 @@ public:
 
 	Memento* createMemento();
 	void reinstateMemento(Memento* memento);
-	
+
 private:
 	std::vector<Square*> m_board;
 	std::vector<Checker*> m_red;

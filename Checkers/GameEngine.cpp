@@ -46,7 +46,6 @@ void GameEngine::computerMove()
 	}
 	else
 	{
-		
 
 		m_board.move(mm.getMove(), false);
 	}
